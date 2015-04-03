@@ -17,10 +17,8 @@ public class PlayerController : MonoBehaviour {
 
 	private Quaternion _initialRotation;
 	private float _rotation = 0;
-	private float _speed = 0;
 	private bool _left = false;
 	private bool _right = false;
-	//private bool _right = false;
 
 	//===================================================
 	// UNITY METHODS
