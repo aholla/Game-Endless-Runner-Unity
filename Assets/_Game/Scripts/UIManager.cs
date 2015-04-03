@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class Pickup : MonoBehaviour {
-
-	public int points = 10;
+public class UIManager : MonoBehaviour {
 	
+	[SerializeField]
+	private Text _pickupText;
+
 	//===================================================
 	// UNITY METHODS
 	//===================================================
@@ -20,7 +22,7 @@ public class Pickup : MonoBehaviour {
 	/// Start.
 	/// </summary>
 	void Start () {
-		
+		UpdatePickups( 0 );
 	}
 	
 	/// <summary>
@@ -34,7 +36,10 @@ public class Pickup : MonoBehaviour {
 	// PUBLIC METHODS
 	//===================================================
 
-
+	public void UpdatePickups( int count ) {
+		_pickupText.text = "" + count;
+		//TODO: animate text.
+	}
 
 	//===================================================
 	// PRIVATE METHODS

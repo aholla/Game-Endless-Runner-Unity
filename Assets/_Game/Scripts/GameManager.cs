@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class Pickup : MonoBehaviour {
+public class GameManager : MonoBehaviour {
+	
+	[SerializeField]
+	private PlayerCollision _playerCollision;
 
-	public int points = 10;
+	[SerializeField]
+	private UIManager _uiManager;
+
+	private int _pickupCount;
 	
 	//===================================================
 	// UNITY METHODS
@@ -13,15 +20,15 @@ public class Pickup : MonoBehaviour {
 	/// Awake.
 	/// </summary>
 	void Awake () {
-		
+		_pickupCount = 0;
 	}
 
 	/// <summary>
 	/// Start.
 	/// </summary>
 	void Start () {
-		
-	}
+		_playerCollision.eventPickupCollision += OnPlayerPickup;
+	}	
 	
 	/// <summary>
 	/// Update.
@@ -46,6 +53,13 @@ public class Pickup : MonoBehaviour {
 	// EVENTS METHODS
 	//===================================================
 
-
+	/// <summary>
+	/// Called when Player collides with Pickup.
+	/// </summary>
+	/// <param name="value">The value.</param>
+	private void OnPlayerPickup( int value ) {
+		_pickupCount += value;
+		_uiManager.UpdatePickups( _pickupCount );
+	}
 
 }

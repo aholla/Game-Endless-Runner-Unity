@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pickup : MonoBehaviour {
+public class PlayerCollision : MonoBehaviour {
 
-	public int points = 10;
+	public delegate void DelegateCollision( int value );
+	public event DelegateCollision eventPickupCollision;
 	
 	//===================================================
 	// UNITY METHODS
@@ -13,7 +14,6 @@ public class Pickup : MonoBehaviour {
 	/// Awake.
 	/// </summary>
 	void Awake () {
-		
 	}
 
 	/// <summary>
@@ -28,6 +28,26 @@ public class Pickup : MonoBehaviour {
 	/// </summary>
 	void Update () {
 		
+	}
+
+
+	/// <summary>
+	/// Called when [trigger enter].
+	/// </summary>
+	/// <param name="other">The other.</param>
+	void OnTriggerEnter( Collider other ) {
+		// if the collision is with a pickup. Dispatch the points.
+		if( other.gameObject.tag == "Pickup" ) {
+			Pickup pickup = other.gameObject.GetComponent<Pickup>();
+			int points = pickup.points;
+
+			if( eventPickupCollision != null ) {
+				eventPickupCollision( points );
+			}
+
+			other.gameObject.SetActive( false );
+			// TODO: add PARTICLES!
+		}
 	}
 
 	//===================================================
