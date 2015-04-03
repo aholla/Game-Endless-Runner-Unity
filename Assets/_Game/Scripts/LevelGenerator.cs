@@ -10,11 +10,7 @@ public class LevelGenerator : MonoBehaviour {
 	[SerializeField]
 	private float _levelPosY;
 
-	[SerializeField]
-	private float _levelZPadding = 0;
-
 	private ObjectPool _pool;
-	private Camera _camera;
 	private List<LevelChunk> _levelChunks;
 
 	private float _currentPosZ;
@@ -28,7 +24,6 @@ public class LevelGenerator : MonoBehaviour {
 	/// </summary>
 	void Awake () {
 		_pool = GetComponent<ObjectPool>();
-		_camera = Camera.main;
 		_currentPosZ = 0.0f;
 		_levelChunks = new List<LevelChunk>();
 	}

@@ -72,7 +72,8 @@ public class ObjectPool : MonoBehaviour {
 	/// </summary>
 	/// <returns></returns>
 	private GameObject AddGameObject() {
-		GameObject go = Instantiate( _prefab, Vector3.zero, Quaternion.identity ) as GameObject;
+		//GameObject go = Instantiate( _prefab, Vector3.zero, Quaternion.identity ) as GameObject;
+		GameObject go = Instantiate( _prefab ) as GameObject;
 		if( _optionalParent == null ) {
 			go.transform.SetParent( this.transform );
 		} else {

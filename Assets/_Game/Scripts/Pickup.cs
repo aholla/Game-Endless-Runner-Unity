@@ -1,39 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraController : MonoBehaviour {
+public class Pickup : MonoBehaviour {
 
-
-	/// <summary>
-	/// Far - used to spawn objects in the distance/
-	/// </summary>
-	private float _far;
-	public float Far {
-		get {
-			return _far;
-		}
-		private set {
-			_far = value;
-		}
-	}
-
-	/// <summary>
-	/// pozZ - used to cull objects behind the camera.
-	/// </summary>
-	private float _posZ;
-	public float PosZ {
-		get {
-			return _posZ;
-		}
-		private set {
-			_posZ = value;
-		}
-	}
-
-	[SerializeField]
-	private float _distancePadding;
-
-	private Camera _camera;
+	public int value = 10;
 	
 	//===================================================
 	// UNITY METHODS
@@ -43,7 +13,7 @@ public class CameraController : MonoBehaviour {
 	/// Awake.
 	/// </summary>
 	void Awake () {
-		_camera = GetComponent<Camera>();
+		
 	}
 
 	/// <summary>
@@ -57,8 +27,7 @@ public class CameraController : MonoBehaviour {
 	/// Update.
 	/// </summary>
 	void Update () {
-		_far = ( transform.position.z + _camera.farClipPlane ) + _distancePadding;
-		_posZ = transform.position.z;
+		
 	}
 
 	//===================================================
@@ -79,6 +48,4 @@ public class CameraController : MonoBehaviour {
 
 
 
-
-	
 }
