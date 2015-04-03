@@ -7,9 +7,6 @@ public class LevelGenerator : MonoBehaviour {
 	[SerializeField]
 	private CameraController _cameraContoller;
 
-	[SerializeField]
-	private float _levelPosY;
-
 	private ObjectPool _pool;
 	private List<LevelChunk> _levelChunks;
 
@@ -83,7 +80,7 @@ public class LevelGenerator : MonoBehaviour {
 	private void SpawnLevelChunk() {
 		// get gameobject from pool.
 		GameObject levelGO = _pool.GetGameObject();
-		levelGO.transform.position = new Vector3( 0.0f, _levelPosY, _currentPosZ );
+		levelGO.transform.position = new Vector3( transform.position.x, transform.position.y, _currentPosZ );
 		
 		// increment the z position.
 		LevelChunk chunk = levelGO.GetComponent<LevelChunk>();
