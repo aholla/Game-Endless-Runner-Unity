@@ -39,9 +39,7 @@ public class PickupSpawner : MonoBehaviour {
 	/// Start.
 	/// </summary>
 	void Start () {
-		_pool.Init();
-		_canSpawn = true;
-		StartCoroutine( SpawnPickups() );
+		_pool.Init();		
 	}
 	
 	/// <summary>
@@ -55,7 +53,26 @@ public class PickupSpawner : MonoBehaviour {
 	// PUBLIC METHODS
 	//===================================================
 
+	/// <summary>
+	/// Starts this running.
+	/// </summary>
+	public void StartRunning() {
+		_canSpawn = true;
+		StartCoroutine( SpawnPickups() );
+	}
 
+	/// <summary>
+	/// Resets this instance.
+	/// </summary>
+	public void Reset() {
+		_canSpawn = false;
+		for( int i = _pickups.Count - 1; i >= 0; i -= 1 ) {
+			Pickup pickup = _pickups[ i ];
+			GameObject pickupGO = pickup.gameObject;
+			pickupGO.SetActive( false );
+			_pickups.Remove( pickup );
+		}
+	}
 
 	//===================================================
 	// PRIVATE METHODS

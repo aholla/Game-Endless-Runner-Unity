@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour {
 	private float _velocity;
 	private bool _isRunning;
 	private PlayerCollision _playerCollison;
+	private Vector3 _initialPosition;
 	
 	//===================================================
 	// UNITY METHODS
@@ -24,13 +25,14 @@ public class PlayerMove : MonoBehaviour {
 	/// Awake.
 	/// </summary>
 	void Awake () {
+		_initialPosition = transform.position;
 	}
 
 	/// <summary>
 	/// Start.
 	/// </summary>
 	void Start () {
-		_isRunning = true;
+		_isRunning = false;
 		_velocity = 0.0f;
 		_playerCollison = GetComponent<PlayerCollision>();
 		_playerCollison.eventObstacleCollision += OnCollision;
@@ -56,7 +58,30 @@ public class PlayerMove : MonoBehaviour {
 	// PUBLIC METHODS
 	//===================================================
 
+	/// <summary>
+	/// Starts the running.
+	/// </summary>
+	public void StartRunning() {
+		Vector3 pos = new Vector3( transform.position.x, transform.position.y, 0.0f );
+		transform.position = pos;
+		_velocity = 0.0f;
+		_isRunning = true;
+	}
 
+	/// <summary>
+	/// Stops the player running.
+	/// </summary>
+	public void StopRunning() {
+		_isRunning = false;
+	}
+
+	/// <summary>
+	/// Resets this instance.
+	/// </summary>
+	public void Reset() {
+		transform.position = _initialPosition;
+		transform.rotation = Quaternion.identity;
+	}
 
 	//===================================================
 	// PRIVATE METHODS

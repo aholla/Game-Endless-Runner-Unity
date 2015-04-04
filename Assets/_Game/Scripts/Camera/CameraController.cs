@@ -34,6 +34,8 @@ public class CameraController : MonoBehaviour {
 	private float _distancePadding;
 
 	private Camera _camera;
+	private  Vector3 _initialPosition;
+	private bool _isRunning;
 	
 	//===================================================
 	// UNITY METHODS
@@ -44,28 +46,38 @@ public class CameraController : MonoBehaviour {
 	/// </summary>
 	void Awake () {
 		_camera = GetComponent<Camera>();
+		_initialPosition = transform.position;
 	}
 
-	/// <summary>
-	/// Start.
-	/// </summary>
-	void Start () {
-		
-	}
+	
 	
 	/// <summary>
 	/// Update.
 	/// </summary>
 	void Update () {
-		_far = ( transform.position.z + _camera.farClipPlane ) + _distancePadding;
-		_posZ = transform.position.z;
+		if( _isRunning ) {
+			_far = ( transform.position.z + _camera.farClipPlane ) + _distancePadding;
+			_posZ = transform.position.z;
+		}
 	}
 
 	//===================================================
 	// PUBLIC METHODS
 	//===================================================
 
+	/// <summary>
+	/// Start.
+	/// </summary>
+	public void StartRunning() {
+		_isRunning = true;
+	}
 
+	public void Reset() {
+		_isRunning = false;
+		transform.position = _initialPosition;
+		_far = ( transform.position.z + _camera.farClipPlane ) + _distancePadding;
+		_posZ = transform.position.z;
+	}
 
 	//===================================================
 	// PRIVATE METHODS

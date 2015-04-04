@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 	private float _rotation = 0;
 	private bool _left = false;
 	private bool _right = false;
+	private  bool _isRunning;
 
 	//===================================================
 	// UNITY METHODS
@@ -42,29 +43,29 @@ public class PlayerController : MonoBehaviour {
 	/// Update.
 	/// </summary>
 	void Update() {
+		if( _isRunning ) {
+			// check for input.
+			CheckInput();
 
-		// check for input.
-		CheckInput();
+			// if left add negative rotation.
+			if( _left ) {
+				UpdateRotation( -_rotationIncrement );
+			}
 
-		// if left add negative rotation.
-		if( _left ) {
-			UpdateRotation( -_rotationIncrement );
+			// if right add positive rotation.
+			if( _right ) {
+				UpdateRotation( _rotationIncrement );
+			}
+
+			// set the initial and dest rotations.
+			Quaternion startRotation = transform.rotation;
+			Quaternion endRotation = _initialRotation * Quaternion.Euler( new Vector3( 0.0f, 0.0f, transform.rotation.z + _rotation ) );
+
+			// Slerp to the dest rotation if it is different.
+			if( startRotation != endRotation ) {
+				transform.rotation = Quaternion.Slerp( startRotation, endRotation, Time.deltaTime * _rotateSpeed );
+			}
 		}
-
-		// if right add positive rotation.
-		if( _right ) {
-			UpdateRotation( _rotationIncrement );
-		}
-
-		// set the initial and dest rotations.
-		Quaternion startRotation = transform.rotation;
-		Quaternion endRotation = _initialRotation * Quaternion.Euler( new Vector3( 0.0f, 0.0f, transform.rotation.z + _rotation ) );
-
-		// Slerp to the dest rotation if it is different.
-		if( startRotation != endRotation ) {
-			transform.rotation = Quaternion.Slerp( startRotation, endRotation, Time.deltaTime * _rotateSpeed );
-		}
-
 		//TODO: Think about gravity, show the player be forced back to the center.
 	}
 
@@ -72,7 +73,22 @@ public class PlayerController : MonoBehaviour {
 	// PUBLIC METHODS
 	//===================================================
 
+	/// <summary>
+	/// ENables the controls..
+	/// </summary>
+	public void StartRunning() {
+		_rotation = 0;
+		_left = false;
+		_right = false;
+		_isRunning = true;
+	}
 
+	/// <summary>
+	/// Disables the controls
+	/// </summary>
+	public void StopRunning() {
+		_isRunning = false;
+	}
 
 	//===================================================
 	// PRIVATE METHODS

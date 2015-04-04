@@ -15,6 +15,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	private List<LevelChunk> _levelChunks;
 	private float _currentPosZ;
+	private bool _canSpawn;
 
 	//===================================================
 	// UNITY METHODS
@@ -37,22 +38,23 @@ public class LevelGenerator : MonoBehaviour {
 			pool.Init();
 		}
 
-		// create initial chunks.
-		CreateFirstSetOfChunks();
+		//// create initial chunks.
+		//CreateFirstSetOfChunks();
 	}
 
 	/// <summary>
 	/// Update.
 	/// </summary>
 	void Update() {
+		if( _canSpawn ) {
+			// if camera position is greater than the current level size, spawn a new level chunk.
+			if( _currentPosZ <= _cameraContoller.Far ) {
+				SpawnLevelChunk();
+			}
 
-		// if camera position is greater than the current level size, spawn a new level chunk.
-		if( _currentPosZ <= _cameraContoller.Far ) {
-			SpawnLevelChunk();
+			// remove the old chunks.
+			CullOldChunks();
 		}
-
-		// remove the old chunks.
-		CullOldChunks();
 	}
 
 
@@ -60,7 +62,24 @@ public class LevelGenerator : MonoBehaviour {
 	// PUBLIC METHODS
 	//===================================================
 
-
+	public void StartRunning() {
+		// create initial chunks.
+		CreateFirstSetOfChunks();
+		_canSpawn = true;
+	}
+	/// <summary>
+	/// Resets this instance.
+	/// </summary>
+	public void Reset() {
+		for( int i = _levelChunks.Count - 1; i >= 0; i -= 1 ) {
+			LevelChunk chunk = _levelChunks[ i ];
+			chunk.gameObject.SetActive( false );
+			chunk.gameObject.transform.position = Vector3.zero;
+			_levelChunks.Remove( chunk );
+		}
+		_currentPosZ = 0.0f;
+		_canSpawn = false;
+	}
 
 	//===================================================
 	// PRIVATE METHODS
@@ -71,7 +90,7 @@ public class LevelGenerator : MonoBehaviour {
 	/// </summary>
 	private void CreateFirstSetOfChunks() {
 		// while within range of the camera, add more level pieces.
-		while( _currentPosZ < _cameraContoller.Far ) {
+		while( _currentPosZ < _cameraContoller.Far + 40.0f ) {
 			SpawnLevelChunk( true );
 		}
 	}
@@ -92,6 +111,8 @@ public class LevelGenerator : MonoBehaviour {
 		// get gameobject from pool.
 		GameObject levelGO = selectedPool.GetGameObject();
 		levelGO.transform.position = new Vector3( transform.position.x, transform.position.y, _currentPosZ );
+		levelGO.SetActive( true );
+
 
 		// increment the z position.
 		LevelChunk chunk = levelGO.GetComponent<LevelChunk>();
