@@ -10,10 +10,19 @@ public class PlayerCollision : MonoBehaviour {
 	// This shoudl go on the blade really but there will only be one blade so one value is okay.
 	[SerializeField]
 	private int _playerDamage;
-	
+
+	private PlayerBloodEmitter _playerBloodEmitter;
+
 	//===================================================
 	// UNITY METHODS
 	//===================================================
+
+	/// <summary>
+	/// Start.
+	/// </summary>
+	void Start() {
+		_playerBloodEmitter = GetComponent<PlayerBloodEmitter>();
+	}
 
 	/// <summary>
 	/// Called when [trigger enter].
@@ -30,10 +39,6 @@ public class PlayerCollision : MonoBehaviour {
 			if( eventPickupCollision != null ) {
 				eventPickupCollision( points );
 			}
-
-			//other.gameObject.SetActive( false );
-
-			AddParticles( Enums.CollisionType.Pickup );
 			//TODO: play sound.
 
 		} else if( other.gameObject.tag == Enums.CollisionType.Obstacle.ToString() ) {
@@ -41,31 +46,24 @@ public class PlayerCollision : MonoBehaviour {
 				eventObstacleCollision( _playerDamage );
 			}
 
-			AddParticles( Enums.CollisionType.Obstacle );
+			// disable the other collider - looks funny but continues the game.
+			other.enabled = false;
+
+			_playerBloodEmitter.Emit( other.gameObject );
 		}
 	}
+
+
 
 	//===================================================
 	// PUBLIC METHODS
 	//===================================================
 
 
-
 	//===================================================
 	// PRIVATE METHODS
 	//===================================================
 
-	// TODO: Fire particles.
-	private void AddParticles( Enums.CollisionType type ) {
-		switch( type ) {
-			case Enums.CollisionType.Pickup:
-				// Gold particles
-				break;
-			case Enums.CollisionType.Obstacle:
-				// Red particles
-				break;
-		}
-	}
 
 	//===================================================
 	// EVENTS METHODS

@@ -24,7 +24,6 @@ public class LevelGenerator : MonoBehaviour {
 	/// Awake.
 	/// </summary>
 	void Awake() {
-		//_pool = GetComponent<ObjectPool>();
 		_currentPosZ = 0.0f;
 		_levelChunks = new List<LevelChunk>();
 	}

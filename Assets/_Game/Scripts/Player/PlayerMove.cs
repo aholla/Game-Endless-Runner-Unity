@@ -9,8 +9,12 @@ public class PlayerMove : MonoBehaviour {
 	[SerializeField]
 	private float _maxSpeed;
 
-	private float _speed;
-	private bool _isRunning;	
+	[SerializeField]
+	private float _imapactDistance;
+
+	private float _velocity;
+	private bool _isRunning;
+	private PlayerCollision _playerCollison;
 	
 	//===================================================
 	// UNITY METHODS
@@ -20,7 +24,6 @@ public class PlayerMove : MonoBehaviour {
 	/// Awake.
 	/// </summary>
 	void Awake () {
-		
 	}
 
 	/// <summary>
@@ -28,19 +31,23 @@ public class PlayerMove : MonoBehaviour {
 	/// </summary>
 	void Start () {
 		_isRunning = true;
-		_speed = 0.0f;
+		_velocity = 0.0f;
+		_playerCollison = GetComponent<PlayerCollision>();
+		_playerCollison.eventObstacleCollision += OnCollision;
 	}
+
+	
 	
 	/// <summary>
 	/// Update.
 	/// </summary>
 	void Update () {
 		if( _isRunning ) {
-			_speed += _acceleration;
-			if( _speed > _maxSpeed ) {
-				_speed = _maxSpeed;
+			_velocity += _acceleration;
+			if( _velocity > _maxSpeed ) {
+				_velocity = _maxSpeed;
 			}
-			transform.Translate( new Vector3( 0, 0, _speed ) );
+			transform.Translate( new Vector3( 0, 0, _velocity ) * Time.deltaTime );
 			//TODO: at some point the transform will have to be set back to 0 to stop massive numbers.
 		}
 	}
@@ -61,6 +68,11 @@ public class PlayerMove : MonoBehaviour {
 	// EVENTS METHODS
 	//===================================================
 
-
+	/// <summary>
+	/// Called when COllision happens.
+	/// </summary>
+	private void OnCollision( int value ) {
+		_velocity = -_imapactDistance;
+	}
 
 }

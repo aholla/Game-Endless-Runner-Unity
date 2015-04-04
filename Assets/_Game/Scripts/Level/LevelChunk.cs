@@ -30,6 +30,8 @@ public class LevelChunk : MonoBehaviour {
 		}
 	}
 
+	private Collider _collider;
+
 	//===================================================
 	// UNITY METHODS
 	//===================================================
@@ -41,6 +43,17 @@ public class LevelChunk : MonoBehaviour {
 		GameObject floor = transform.Find( "Floor" ).gameObject;
 		Renderer renderer = floor.GetComponent<Renderer>();
 		_size = renderer.bounds.extents.z * 2.0f; // centered object.
+
+		// make sure the collider is enabled, it gets turned off on player collision.
+		_collider = gameObject.GetComponentInChildren<Collider>();
+		_collider.enabled = true;
+	}
+
+	/// <summary>
+	/// Called when [enable].
+	/// </summary>
+	void OnEnable() {
+		_collider.enabled = true;
 	}
 	
 	//===================================================
