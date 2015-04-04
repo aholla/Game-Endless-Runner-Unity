@@ -24,13 +24,14 @@ public class PlayerCollision : MonoBehaviour {
 		// if the collision is with a pickup. Dispatch the points.
 		if( other.gameObject.tag == Enums.CollisionType.Pickup.ToString() ) {
 			Pickup pickup = other.gameObject.GetComponent<Pickup>();
+			pickup.Collided();
 			int points = pickup.points;
 
 			if( eventPickupCollision != null ) {
 				eventPickupCollision( points );
 			}
 
-			other.gameObject.SetActive( false );
+			//other.gameObject.SetActive( false );
 
 			AddParticles( Enums.CollisionType.Pickup );
 			//TODO: play sound.
