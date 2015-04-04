@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour {
 	private float _rotationIncrement;
 
 	[SerializeField]
+	private float _rotationIncrementBack;
+
+	[SerializeField]
 	private float _rotationMax;
 
 	[SerializeField]
@@ -19,8 +22,8 @@ public class PlayerController : MonoBehaviour {
 	private float _rotation = 0;
 	private bool _left = false;
 	private bool _right = false;
-	private  bool _isRunning;
-
+	private bool _isRunning;
+	
 	//===================================================
 	// UNITY METHODS
 	//===================================================
@@ -47,14 +50,19 @@ public class PlayerController : MonoBehaviour {
 			// check for input.
 			CheckInput();
 
-			// if left add negative rotation.
 			if( _left ) {
+				// if left add negative rotation.
 				UpdateRotation( -_rotationIncrement );
-			}
-
-			// if right add positive rotation.
-			if( _right ) {
+			} else if( _right ) {
+				// if right add positive rotation.
 				UpdateRotation( _rotationIncrement );
+			} else {
+				// else drift back to 0.
+				if( _rotation > 0.0f ) {
+					_rotation -= _rotationIncrementBack;
+				} else if( _rotation < 0.0f ) {
+					_rotation += _rotationIncrementBack;
+				}
 			}
 
 			// set the initial and dest rotations.
@@ -66,7 +74,6 @@ public class PlayerController : MonoBehaviour {
 				transform.rotation = Quaternion.Slerp( startRotation, endRotation, Time.deltaTime * _rotateSpeed );
 			}
 		}
-		//TODO: Think about gravity, show the player be forced back to the center.
 	}
 
 	//===================================================
@@ -113,8 +120,6 @@ public class PlayerController : MonoBehaviour {
 		if( Input.GetKeyUp( KeyCode.RightArrow ) ) {
 			_right = false;
 		}
-
-		// TODO: Implement mouse countrols.
 	}
 
 	/// <summary>
@@ -130,8 +135,9 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-
 	//===================================================
 	// EVENTS METHODS
 	//===================================================
+
+
 }

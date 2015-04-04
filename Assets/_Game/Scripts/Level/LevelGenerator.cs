@@ -37,9 +37,6 @@ public class LevelGenerator : MonoBehaviour {
 			ObjectPool pool = _availablePools[ i ];
 			pool.Init();
 		}
-
-		//// create initial chunks.
-		//CreateFirstSetOfChunks();
 	}
 
 	/// <summary>
@@ -67,6 +64,7 @@ public class LevelGenerator : MonoBehaviour {
 		CreateFirstSetOfChunks();
 		_canSpawn = true;
 	}
+
 	/// <summary>
 	/// Resets this instance.
 	/// </summary>
@@ -101,18 +99,19 @@ public class LevelGenerator : MonoBehaviour {
 	private void SpawnLevelChunk( bool forcePlainChunk = false ) {
 		// select a chunk from a random pool if not forced plain. There are more plain chunks than obstacle chunks.
 		ObjectPool selectedPool;
-		if( !forcePlainChunk ) {
+		int randomNum = Random.Range( 0, 10 );
+
+		if( forcePlainChunk || randomNum < 1 ) {
+			selectedPool = _objectPoolPlain;
+		} else {
 			int random = Random.Range( 0, _availablePools.Length );
 			selectedPool = _availablePools[ random ];
-		} else {
-			selectedPool = _objectPoolPlain;
 		}
 
 		// get gameobject from pool.
 		GameObject levelGO = selectedPool.GetGameObject();
 		levelGO.transform.position = new Vector3( transform.position.x, transform.position.y, _currentPosZ );
 		levelGO.SetActive( true );
-
 
 		// increment the z position.
 		LevelChunk chunk = levelGO.GetComponent<LevelChunk>();

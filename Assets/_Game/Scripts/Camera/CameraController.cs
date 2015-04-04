@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-
 	/// <summary>
 	/// Far - used to spawn objects in the distance/
 	/// </summary>
@@ -48,9 +47,7 @@ public class CameraController : MonoBehaviour {
 		_camera = GetComponent<Camera>();
 		_initialPosition = transform.position;
 	}
-
-	
-	
+		
 	/// <summary>
 	/// Update.
 	/// </summary>
@@ -72,6 +69,9 @@ public class CameraController : MonoBehaviour {
 		_isRunning = true;
 	}
 
+	/// <summary>
+	/// Resets this instance.
+	/// </summary>
 	public void Reset() {
 		_isRunning = false;
 		transform.position = _initialPosition;

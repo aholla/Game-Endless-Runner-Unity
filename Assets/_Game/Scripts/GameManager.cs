@@ -18,16 +18,15 @@ public class GameManager : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject _camera;
-
-	private CameraShake _cameraShake;
-	private CameraController _cameraController;
-
+	
 	[SerializeField]
 	private int _startingHealth = 0;
 
 	[SerializeField]
 	private MusicManager _musicManager;
 
+	private CameraShake _cameraShake;
+	private CameraController _cameraController;
 	private PlayerData _playerData;
 	private PlayerMove _playerMove;
 	private PlayerCollision _playerCollision;
@@ -92,8 +91,7 @@ public class GameManager : MonoBehaviour {
 	private void ShowGameOverScreen() {
 		_uiManager.ShowGameOverScreen( _playerData.coins, _playerData.distance );
 		_musicManager.PlayMusic( Enums.MusicType.Menu );
-	}
-	
+	}	
 
 	//===================================================
 	// PRIVATE METHODS
@@ -117,8 +115,6 @@ public class GameManager : MonoBehaviour {
 		_pickupSpawner.Reset();
 	}
 
-	
-
 	//===================================================
 	// EVENTS METHODS
 	//===================================================
@@ -136,6 +132,9 @@ public class GameManager : MonoBehaviour {
 		_musicManager.PlayMusic( Enums.MusicType.Game );
 	}
 
+	/// <summary>
+	/// Stop the player running.
+	/// </summary>
 	private void StopRunning() {
 		_playerMove.StopRunning();
 		_playerContoller.StopRunning();
@@ -157,17 +156,21 @@ public class GameManager : MonoBehaviour {
 		_uiManager.UpdateHUDPickups( _playerData.coins );
 	}
 
+	/// <summary>
+	/// Called when the player collides.
+	/// </summary>
+	/// <param name="value">The value.</param>
 	private void OnPlayerCollision( int value ) {
 		_playerData.health -= value;
 		_uiManager.UpdateHUDHealth( _playerData.health );
 
+		_cameraShake.Shake();
+
+		// DEAD
 		if( _playerData.health <= 0 ) {
-			// DEAD
 			StopRunning();
 			ShowGameOverScreen();
 		}
-
-		_cameraShake.Shake();
 	}
 
 }

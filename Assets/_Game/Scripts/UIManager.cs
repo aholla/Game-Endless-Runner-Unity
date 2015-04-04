@@ -39,6 +39,10 @@ public class UIManager : MonoBehaviour {
 	void Start() {
 		_gameoverScores = _gameOverScreen.gameObject.GetComponent<GameOverScreen>();
 	}
+	
+	//===================================================
+	// PUBLIC METHODS
+	//===================================================
 
 	/// <summary>
 	/// Called when the player hits the play button.
@@ -50,7 +54,7 @@ public class UIManager : MonoBehaviour {
 			.setOnComplete( () => {
 				_currentScreen.gameObject.SetActive( false );
 
-				if( eventPlayGame != null) {
+				if( eventPlayGame != null ) {
 					eventPlayGame();
 				}
 
@@ -58,10 +62,6 @@ public class UIManager : MonoBehaviour {
 			}
 		);
 	}
-
-	//===================================================
-	// PUBLIC METHODS
-	//===================================================
 
 	/// <summary>
 	/// Shows the title screen.
@@ -108,14 +108,26 @@ public class UIManager : MonoBehaviour {
 		UpdateHUDDistance( _playerData.distance );
 	}
 
+	/// <summary>
+	/// Updates the hud pickups.
+	/// </summary>
+	/// <param name="count">The count.</param>
 	public void UpdateHUDPickups( int count ) {
 		_pickupText.text = "" + count;
 	}
 
+	/// <summary>
+	/// Updates the hud health.
+	/// </summary>
+	/// <param name="count">The count.</param>
 	public void UpdateHUDHealth( int count ) {
 		_healthText.text = "" + count;
 	}
 
+	/// <summary>
+	/// Updates the hud distance.
+	/// </summary>
+	/// <param name="count">The count.</param>
 	public void UpdateHUDDistance( int count ) {
 		_distanceText.text = "" + count;
 	}
@@ -134,8 +146,7 @@ public class UIManager : MonoBehaviour {
 			}
 		);
 	}
-
-
+	
 
 	//===================================================
 	// EVENTS METHODS

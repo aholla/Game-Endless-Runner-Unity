@@ -18,13 +18,6 @@ public class FollowPlayer : MonoBehaviour {
 	//===================================================
 
 	/// <summary>
-	/// Awake.
-	/// </summary>
-	void Awake () {
-		
-	}
-
-	/// <summary>
 	/// Start.
 	/// </summary>
 	void Start () {
@@ -38,7 +31,7 @@ public class FollowPlayer : MonoBehaviour {
 	void Update () {
 		if( !_paused ) {
 			Vector3 targetPos = new Vector3( _startPosition.x, _startPosition.y, _target.position.z - _offset.z );
-			transform.position = Vector3.Lerp( transform.position, targetPos, Time.deltaTime * 6.0f );
+			transform.position = Vector3.Lerp( transform.position, targetPos, Time.deltaTime * _ease );
 		}
 	}
 
@@ -46,6 +39,10 @@ public class FollowPlayer : MonoBehaviour {
 	// PUBLIC METHODS
 	//===================================================
 
+	/// <summary>
+	/// Toggles the pause.
+	/// </summary>
+	/// <param name="isTrue">if set to <c>true</c> [is true].</param>
 	public void TogglePause( bool isTrue ) {
 		_paused = isTrue;
 	}

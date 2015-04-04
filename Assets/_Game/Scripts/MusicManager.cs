@@ -18,7 +18,7 @@ public class MusicManager : MonoBehaviour {
 	/// <summary>
 	/// Start.
 	/// </summary>
-	void Start () {
+	void Awake () {
 		_source = gameObject.AddComponent<AudioSource>();
 	}
 

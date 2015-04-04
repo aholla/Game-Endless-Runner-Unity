@@ -36,9 +36,7 @@ public class PlayerMove : MonoBehaviour {
 		_velocity = 0.0f;
 		_playerCollison = GetComponent<PlayerCollision>();
 		_playerCollison.eventObstacleCollision += OnCollision;
-	}
-
-	
+	}	
 	
 	/// <summary>
 	/// Update.

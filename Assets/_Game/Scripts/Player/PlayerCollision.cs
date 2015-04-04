@@ -7,7 +7,7 @@ public class PlayerCollision : MonoBehaviour {
 	public event DelegateCollision eventPickupCollision;
 	public event DelegateCollision eventObstacleCollision;
 
-	// This shoudl go on the blade really but there will only be one blade so one value is okay.
+	// This shoudl go on the blade really.
 	[SerializeField]
 	private int _playerDamage;
 
@@ -49,7 +49,6 @@ public class PlayerCollision : MonoBehaviour {
 			if( eventPickupCollision != null ) {
 				eventPickupCollision( points );
 			}
-			//TODO: play sound.
 
 		} else if( other.gameObject.tag == Enums.CollisionType.Obstacle.ToString() ) {
 			PlaySound( Enums.CollisionType.Obstacle ); 
@@ -62,9 +61,9 @@ public class PlayerCollision : MonoBehaviour {
 			other.enabled = false;
 
 			_playerBloodEmitter.Emit( other.gameObject );
-
 		}
 	}
+
 	//===================================================
 	// PUBLIC METHODS
 	//===================================================
