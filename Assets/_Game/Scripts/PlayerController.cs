@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	private float _rotateSpeed;
 
 	[SerializeField]
-	private float _rotateReturnSpeed;
+	private float _rotateReturnSpeed;	
 
 	private Quaternion _initialRotation;
 	private float _rotation = 0;
