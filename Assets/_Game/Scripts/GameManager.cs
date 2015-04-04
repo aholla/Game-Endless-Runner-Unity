@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
 
 	[SerializeField]
 	private PlayerData _playerData;
+
+	[SerializeField]
+	private CameraShake _cameraShake;
 	
 	//===================================================
 	// UNITY METHODS
@@ -77,6 +80,8 @@ public class GameManager : MonoBehaviour {
 			// DEAD
 			//TODO: End game
 		}
+
+		_cameraShake.Shake();
 
 	}
 

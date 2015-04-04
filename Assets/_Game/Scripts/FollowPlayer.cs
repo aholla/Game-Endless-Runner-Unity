@@ -11,6 +11,7 @@ public class FollowPlayer : MonoBehaviour {
 
 	private Vector3 _startPosition;
 	private Vector3 _offset;
+	private bool _paused;
 
 	//===================================================
 	// UNITY METHODS
@@ -35,14 +36,19 @@ public class FollowPlayer : MonoBehaviour {
 	/// Update.
 	/// </summary>
 	void Update () {
-		transform.position = new Vector3( _startPosition.x, _startPosition.y, _target.position.z - _offset.z );
+		if( !_paused ) {
+			Vector3 targetPos = new Vector3( _startPosition.x, _startPosition.y, _target.position.z - _offset.z );
+			transform.position = Vector3.Lerp( transform.position, targetPos, Time.deltaTime * 6.0f );
+		}
 	}
 
 	//===================================================
 	// PUBLIC METHODS
 	//===================================================
 
-
+	public void TogglePause( bool isTrue ) {
+		_paused = isTrue;
+	}
 
 	//===================================================
 	// PRIVATE METHODS
@@ -56,4 +62,6 @@ public class FollowPlayer : MonoBehaviour {
 
 
 
+
+	
 }
