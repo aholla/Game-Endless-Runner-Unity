@@ -44,7 +44,7 @@ public class Pickup : MonoBehaviour {
 	/// </summary>
 	private void EmitPaticles() {
 		Vector3 pos = transform.position;
-		pos.z += 5.0f;
+		pos.z -= 5.0f;
 
 		_particles = Instantiate( _particlePrefab, pos, Quaternion.identity ) as GameObject;
 		_particles.transform.SetParent( gameObject.transform );
