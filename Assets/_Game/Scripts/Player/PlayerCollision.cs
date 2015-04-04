@@ -11,7 +11,14 @@ public class PlayerCollision : MonoBehaviour {
 	[SerializeField]
 	private int _playerDamage;
 
+	[SerializeField]
+	private AudioClip _soundPickup;
+
+	[SerializeField]
+	private AudioClip _soundCollision;
+
 	private PlayerBloodEmitter _playerBloodEmitter;
+	private  AudioSource _audioSource;
 
 	//===================================================
 	// UNITY METHODS
@@ -21,6 +28,7 @@ public class PlayerCollision : MonoBehaviour {
 	/// Start.
 	/// </summary>
 	void Start() {
+		_audioSource = gameObject.GetComponent<AudioSource>();
 		_playerBloodEmitter = GetComponent<PlayerBloodEmitter>();
 	}
 
@@ -32,6 +40,8 @@ public class PlayerCollision : MonoBehaviour {
 
 		// if the collision is with a pickup. Dispatch the points.
 		if( other.gameObject.tag == Enums.CollisionType.Pickup.ToString() ) {
+			PlaySound( Enums.CollisionType.Pickup ); 
+
 			Pickup pickup = other.gameObject.GetComponent<Pickup>();
 			pickup.Collided();
 			int points = pickup.points;
@@ -42,6 +52,8 @@ public class PlayerCollision : MonoBehaviour {
 			//TODO: play sound.
 
 		} else if( other.gameObject.tag == Enums.CollisionType.Obstacle.ToString() ) {
+			PlaySound( Enums.CollisionType.Obstacle ); 
+
 			if( eventObstacleCollision != null ) {
 				eventObstacleCollision( _playerDamage );
 			}
@@ -50,11 +62,9 @@ public class PlayerCollision : MonoBehaviour {
 			other.enabled = false;
 
 			_playerBloodEmitter.Emit( other.gameObject );
+
 		}
 	}
-
-
-
 	//===================================================
 	// PUBLIC METHODS
 	//===================================================
@@ -64,6 +74,21 @@ public class PlayerCollision : MonoBehaviour {
 	// PRIVATE METHODS
 	//===================================================
 
+	/// <summary>
+	/// Plays the sound.
+	/// </summary>
+	/// <param name="type">The type.</param>
+	private void PlaySound( Enums.CollisionType type ) {
+		switch( type ) {
+			case Enums.CollisionType.Pickup:
+				_audioSource.clip = _soundPickup;
+				break;
+			case Enums.CollisionType.Obstacle:
+				_audioSource.clip = _soundCollision;
+				break;
+		}
+		_audioSource.Play();
+	}
 
 	//===================================================
 	// EVENTS METHODS

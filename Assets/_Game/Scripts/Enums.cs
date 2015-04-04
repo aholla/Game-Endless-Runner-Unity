@@ -10,4 +10,10 @@ public static class Enums {
 	}
 
 
+	 public enum MusicType {
+		 None,
+		 Menu,
+		 Game
+	 }
+
 }

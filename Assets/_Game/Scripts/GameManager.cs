@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	private int _startingHealth = 0;
 
+	[SerializeField]
+	private MusicManager _musicManager;
+
 	private PlayerData _playerData;
 	private PlayerMove _playerMove;
 	private PlayerCollision _playerCollision;
@@ -80,6 +83,7 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	private void ShowTitleScreen() {
 		_uiManager.ShowTitleScreen();
+		_musicManager.PlayMusic( Enums.MusicType.Menu );
 	}
 
 	/// <summary>
@@ -87,6 +91,7 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	private void ShowGameOverScreen() {
 		_uiManager.ShowGameOverScreen( _playerData.coins, _playerData.distance );
+		_musicManager.PlayMusic( Enums.MusicType.Menu );
 	}
 	
 
@@ -112,6 +117,8 @@ public class GameManager : MonoBehaviour {
 		_pickupSpawner.Reset();
 	}
 
+	
+
 	//===================================================
 	// EVENTS METHODS
 	//===================================================
@@ -125,6 +132,8 @@ public class GameManager : MonoBehaviour {
 		_pickupSpawner.StartRunning();
 		_playerMove.StartRunning();
 		_playerContoller.StartRunning();
+
+		_musicManager.PlayMusic( Enums.MusicType.Game );
 	}
 
 	private void StopRunning() {
