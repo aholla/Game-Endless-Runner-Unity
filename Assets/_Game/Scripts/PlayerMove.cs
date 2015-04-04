@@ -41,6 +41,7 @@ public class PlayerMove : MonoBehaviour {
 				_speed = _maxSpeed;
 			}
 			transform.Translate( new Vector3( 0, 0, _speed ) );
+			//TODO: at some point the transform will have to be set back to 0 to stop massive numbers.
 		}
 	}
 

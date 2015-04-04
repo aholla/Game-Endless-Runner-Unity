@@ -41,8 +41,11 @@ public class ObjectPool : MonoBehaviour {
 				return ob;
 			}
 		}
+
 		// if here, then there is not enought to spawn so add another one.
-		return AddGameObject();
+		GameObject additionalGO = AddGameObject();
+		additionalGO.SetActive( true );
+		return additionalGO;
 	}
 
 	/// <summary>
@@ -77,7 +80,7 @@ public class ObjectPool : MonoBehaviour {
 		if( _optionalParent == null ) {
 			go.transform.SetParent( this.transform );
 		} else {
-			go.transform.SetParent( _optionalParent.transform );
+			go.transform.SetParent( _optionalParent.transform, true );
 		}
 		go.SetActive( false );
 		_pool.Add( go );
