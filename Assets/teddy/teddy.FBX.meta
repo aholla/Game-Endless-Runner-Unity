@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: 5633af79ef907d14ead3c9fa1c557741
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Bip01
+    100002: Bip01 Head
+    100004: Bip01 L Calf
+    100006: Bip01 L Clavicle
+    100008: Bip01 L Foot
+    100010: Bip01 L Forearm
+    100012: Bip01 L Hand
+    100014: Bip01 L Thigh
+    100016: Bip01 L UpperArm
+    100018: Bip01 Neck
+    100020: Bip01 Pelvis
+    100022: Bip01 R Calf
+    100024: Bip01 R Clavicle
+    100026: Bip01 R Foot
+    100028: Bip01 R Forearm
+    100030: Bip01 R Hand
+    100032: Bip01 R Thigh
+    100034: Bip01 R UpperArm
+    100036: Bip01 Spine
+    100038: Bip01 Spine1
+    100040: Bip01_Ctrl:ChestEndEffector
+    100042: Bip01_Ctrl:ChestOriginEffector
+    100044: Bip01_Ctrl:Head
+    100046: Bip01_Ctrl:HeadEffector
+    100048: Bip01_Ctrl:Hips
+    100050: Bip01_Ctrl:HipsEffector
+    100052: Bip01_Ctrl:LeftAnkleEffector
+    100054: Bip01_Ctrl:LeftArm
+    100056: Bip01_Ctrl:LeftElbowEffector
+    100058: Bip01_Ctrl:LeftFoot
+    100060: Bip01_Ctrl:LeftForeArm
+    100062: Bip01_Ctrl:LeftHand
+    100064: Bip01_Ctrl:LeftHipEffector
+    100066: Bip01_Ctrl:LeftKneeEffector
+    100068: Bip01_Ctrl:LeftLeg
+    100070: Bip01_Ctrl:LeftShoulder
+    100072: Bip01_Ctrl:LeftShoulderEffector
+    100074: Bip01_Ctrl:LeftUpLeg
+    100076: Bip01_Ctrl:LeftWristEffector
+    100078: Bip01_Ctrl:Neck
+    100080: Bip01_Ctrl:Reference
+    100082: Bip01_Ctrl:RightAnkleEffector
+    100084: Bip01_Ctrl:RightArm
+    100086: Bip01_Ctrl:RightElbowEffector
+    100088: Bip01_Ctrl:RightFoot
+    100090: Bip01_Ctrl:RightForeArm
+    100092: Bip01_Ctrl:RightHand
+    100094: Bip01_Ctrl:RightHipEffector
+    100096: Bip01_Ctrl:RightKneeEffector
+    100098: Bip01_Ctrl:RightLeg
+    100100: Bip01_Ctrl:RightShoulder
+    100102: Bip01_Ctrl:RightShoulderEffector
+    100104: Bip01_Ctrl:RightUpLeg
+    100106: Bip01_Ctrl:RightWristEffector
+    100108: Bip01_Ctrl:Spine
+    100110: Bip01_Ctrl:Spine1
+    100112: //RootNode
+    100114: teddyzsphere_unfold3d
+    400000: Bip01
+    400002: Bip01 Head
+    400004: Bip01 L Calf
+    400006: Bip01 L Clavicle
+    400008: Bip01 L Foot
+    400010: Bip01 L Forearm
+    400012: Bip01 L Hand
+    400014: Bip01 L Thigh
+    400016: Bip01 L UpperArm
+    400018: Bip01 Neck
+    400020: Bip01 Pelvis
+    400022: Bip01 R Calf
+    400024: Bip01 R Clavicle
+    400026: Bip01 R Foot
+    400028: Bip01 R Forearm
+    400030: Bip01 R Hand
+    400032: Bip01 R Thigh
+    400034: Bip01 R UpperArm
+    400036: Bip01 Spine
+    400038: Bip01 Spine1
+    400040: Bip01_Ctrl:ChestEndEffector
+    400042: Bip01_Ctrl:ChestOriginEffector
+    400044: Bip01_Ctrl:Head
+    400046: Bip01_Ctrl:HeadEffector
+    400048: Bip01_Ctrl:Hips
+    400050: Bip01_Ctrl:HipsEffector
+    400052: Bip01_Ctrl:LeftAnkleEffector
+    400054: Bip01_Ctrl:LeftArm
+    400056: Bip01_Ctrl:LeftElbowEffector
+    400058: Bip01_Ctrl:LeftFoot
+    400060: Bip01_Ctrl:LeftForeArm
+    400062: Bip01_Ctrl:LeftHand
+    400064: Bip01_Ctrl:LeftHipEffector
+    400066: Bip01_Ctrl:LeftKneeEffector
+    400068: Bip01_Ctrl:LeftLeg
+    400070: Bip01_Ctrl:LeftShoulder
+    400072: Bip01_Ctrl:LeftShoulderEffector
+    400074: Bip01_Ctrl:LeftUpLeg
+    400076: Bip01_Ctrl:LeftWristEffector
+    400078: Bip01_Ctrl:Neck
+    400080: Bip01_Ctrl:Reference
+    400082: Bip01_Ctrl:RightAnkleEffector
+    400084: Bip01_Ctrl:RightArm
+    400086: Bip01_Ctrl:RightElbowEffector
+    400088: Bip01_Ctrl:RightFoot
+    400090: Bip01_Ctrl:RightForeArm
+    400092: Bip01_Ctrl:RightHand
+    400094: Bip01_Ctrl:RightHipEffector
+    400096: Bip01_Ctrl:RightKneeEffector
+    400098: Bip01_Ctrl:RightLeg
+    400100: Bip01_Ctrl:RightShoulder
+    400102: Bip01_Ctrl:RightShoulderEffector
+    400104: Bip01_Ctrl:RightUpLeg
+    400106: Bip01_Ctrl:RightWristEffector
+    400108: Bip01_Ctrl:Spine
+    400110: Bip01_Ctrl:Spine1
+    400112: //RootNode
+    400114: teddyzsphere_unfold3d
+    4300000: teddyzsphere_unfold3d
+    7400000: walk
+    7400002: idle
+    9500000: //RootNode
+    13700000: teddyzsphere_unfold3d
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
