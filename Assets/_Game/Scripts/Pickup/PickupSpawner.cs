@@ -112,7 +112,7 @@ public class PickupSpawner : MonoBehaviour {
 				pos.y = _locationCenter.position.y;
 				break;
 		}
-		pos.z = _cameraContoller.Far + 10.0f;
+		pos.z = _cameraContoller.Far + 30.0f;
 
 		// get a pickup and set position.
 		GameObject pickupGO = _pool.GetGameObject();
