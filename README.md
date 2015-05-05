@@ -8,3 +8,5 @@ As the player moves throught the world, the camera follow and level pieces are s
 
 For more info: http://www.aholla.co.uk/2015/04/endless-horror-runner-unity/
 
+![Alt text](http://www.aholla.co.uk/wp-content/uploads/endless_runner_unity.png "Screenshot")
+
