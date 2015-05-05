@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | EndlessRunner_Unity</title>
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <link rel="stylesheet" href="bin/TemplateData/style.css">
+    <link rel="shortcut icon" href="bin/TemplateData/favicon.ico" />
     <script src="bin/TemplateData/UnityProgress.js"></script>
   </head>
   <body class="template">
@@ -20,8 +20,8 @@
     <script type='text/javascript'>
   // connect to canvas
   var Module = {
-    filePackagePrefixURL: "Release/",
-    memoryInitializerPrefixURL: "Release/",
+    filePackagePrefixURL: "bin/Release/",
+    memoryInitializerPrefixURL: "bin/Release/",
     preRun: [],
     postRun: [],
     print: (function() {
@@ -66,7 +66,7 @@
   document.body.appendChild(script);
 } else {
   var codeXHR = new XMLHttpRequest();
-  codeXHR.open('GET', 'Release/bin.js', true);
+  codeXHR.open('GET', 'bin/Release/bin.js', true);
   codeXHR.onload = function() {
     var code = codeXHR.responseText;
     if (!Math.fround) { 
